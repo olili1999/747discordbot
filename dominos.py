@@ -60,7 +60,10 @@ def loop(string, max_attempts=3):
     attempt = 1
     while True:
         try:
-            driver.find_element_by_xpath(string).click()
+            driver.execute_script(
+                "arguments[0].click();",
+                WebDriverWait(driver, 20).until(
+                    EC.element_to_be_clickable((By.XPATH, string))))
             break
         except StaleElementReferenceException:
             if attempt == max_attempts:
@@ -130,7 +133,12 @@ if (single == True):
             ))))
 
     driver.get("https://www.dominos.com/en/pages/order/#!/checkout/")
-
+    # Click "No Thanks to Donations" Button
+    loop(".//*[@id='genericOverlay']/section/div/div/div[2]/div/div[4]/a[2]")
+    # Click "Done With This Coupon" Button
+    loop(".//*[@id='genericOverlay']/section/div/div[6]/div[2]/a")
+    # Click "Continue Checkout" Button
+    loop(".//*[@id='js-checkoutColumns']/aside/div[3]/div[1]/a")
 # coupon code 9133
 # https://www.dominos.com/en/pages/order/#/product/S_PIZZA/builder/?couponCode=9193&code=12SCREEN
 # if (double == True):
