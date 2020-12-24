@@ -1,0 +1,25 @@
+1608776348512	geckodriver	INFO	Listening on 127.0.0.1:3161
+1608781982004	geckodriver	INFO	Listening on 127.0.0.1:9716
+1608781985033	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Oliver.DESKTOP-H322AF1\\AppData\\Local\\Temp\\rust_mozprofilea93MBI"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+Can't find symbol 'eglSetDamageRegionKHR'.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1608781988421	Marionette	INFO	Listening on port 9728
+1608781988672	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 716: Error: Phase "Sqlite.jsm: wait until all connections are closed" is finished, it is too late to register completion condition "protections.sqlite#0: waiting for shutdown"
+1608782015118	Marionette	INFO	Stopped listening on port 9728
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1608782026223	geckodriver	INFO	Listening on 127.0.0.1:9893
+1608782029274	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\Oliver.DESKTOP-H322AF1\\AppData\\Local\\Temp\\rust_mozprofileWnF8nq"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+Can't find symbol 'eglSetDamageRegionKHR'.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1608782032717	Marionette	INFO	Listening on port 9904
+1608782032941	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 716: Error: Phase "Sqlite.jsm: wait until all connections are closed" is finished, it is too late to register completion condition "protections.sqlite#0: waiting for shutdown"
+1608782075532	Marionette	INFO	Stopped listening on port 9904
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+

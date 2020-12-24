@@ -1,0 +1,32 @@
+==================================
+MEATS
+==================================
+1 - Ham 
+2 - Beef 
+3 - Salami 
+4 - Pepperoni
+5 - Italian Sausage
+6 - Premium Chicken 
+7 - Bacon
+8 - Philly Steak 
+==================================
+CHOOSE NON-MEATS
+==================================
+10 - Hot Buffalo Sauce 
+11 - Jalapeno Peppers
+12 - Onions
+13 - Banana Peppers
+14 - Diced Tomatoes 
+15 - Black Olives
+16 - Green Olives 
+17 - Mushrooms
+18 - Pineapple
+19 - Shredded Provolone Cheese 
+20 - Cheddar Cheese
+21 - Green Peppers
+22 - Cheddar Cheese
+23 - Green Peppers
+24 - Spinach 
+25 - Roasted Red Peppers
+26 - Feta Cheese
+27 - Shredded Parmesan Asiago 
