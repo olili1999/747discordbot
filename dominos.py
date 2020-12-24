@@ -25,11 +25,10 @@ driver.find_element_by_id("Address_Line_2").clear()  # <--- Apartment
 driver.find_element_by_id("City_Sep").clear()
 driver.find_element_by_id("Postal_Code_Sep").clear()
 
-driver.find_element_by_id("Street").send_keys(
-    "320 Bayshore Blvd")  # <--- Street
+driver.find_element_by_id("Street").send_keys("747 Packard St")  # <--- Street
 driver.find_element_by_id("Address_Line_2").send_keys("")  # <--- Apartment
-driver.find_element_by_id("City_Sep").send_keys("San Francisco")  # <--- City
-driver.find_element_by_id("Postal_Code_Sep").send_keys("94124")  # <--- Zip
+driver.find_element_by_id("City_Sep").send_keys("Ann Arbor")  # <--- City
+driver.find_element_by_id("Postal_Code_Sep").send_keys("48104")  # <--- Zip
 
 State = driver.find_element_by_id("Region")
 for option in State.find_elements_by_tag_name("option"):
@@ -121,24 +120,23 @@ if (single == True):
         "https://www.dominos.com/en/pages/order/#!/section/Coupons/category/All/"
     )
     #click "Add Coupon" button
-    # driver.find_element_by_xpath(
-    #     ".//*[@id='js-pageSplit']/section/div[2]/div/div[1]/div[16]/a/div[2]/button"
-    # ).click()
     driver.execute_script(
         "arguments[0].click();",
         WebDriverWait(driver, 20).until(
             EC.element_to_be_clickable((
                 By.XPATH,
-                ".//*[@id='js-pageSplit']/section/div[2]/div/div[1]/div[16]/a/div[2]/button"
+                ".//*[@id='js-pageSplit']/section/div[2]/div/div[1]/div[9]/a/div[2]/button"
             ))))
 
-    driver.get("https://www.dominos.com/en/pages/order/#!/checkout/")
     # Click "No Thanks to Donations" Button
-    loop(".//*[@id='genericOverlay']/section/div/div/div[2]/div/div[4]/a[2]")
+    # loop(".//*[@id='genericOverlay']/section/div/div/div[2]/div/div[4]/a[2]")
+
     # Click "Done With This Coupon" Button
     loop(".//*[@id='genericOverlay']/section/div/div[6]/div[2]/a")
-    # Click "Continue Checkout" Button
-    loop(".//*[@id='js-checkoutColumns']/aside/div[3]/div[1]/a")
+
+    # # Click "Continue Checkout" Button
+    # loop(".//*[@id='js-checkoutColumns']/aside/div[3]/div[1]/a")
+
 # coupon code 9133
 # https://www.dominos.com/en/pages/order/#/product/S_PIZZA/builder/?couponCode=9193&code=12SCREEN
 # if (double == True):
