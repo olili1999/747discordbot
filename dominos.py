@@ -70,12 +70,26 @@ def loop(string, max_attempts=3):
 
 # coupon code 9174
 # https://www.dominos.com/en/pages/order/#/product/S_PIZZA/builder/?couponCode=9174&code=14SCREEN
+
+# driver.get("https://dominos.com")
+# driver.find_element_by_xpath(
+#     ".//*[@id='homeWrapper']/main/section[5]/div/div[2]/div/span[4]/span/a"
+# ).click()
+
+# driver.find_element_by_xpath(
+#     ".//*[@id='genericOverlay']/section/div/div[5]/section[1]/header/h2/button"
+# ).click()
 if (single == True):
+    #Get to Pizza Ordering Screen
     driver.get(
         "https://www.dominos.com/en/pages/order/#/product/S_PIZZA/builder/?couponCode=9174&code=14SCREEN"
     )
+
+    #Skip to Toppings Page
     driver.find_element_by_xpath(".//*[@id='toppings']").click()
 
+    # Click "No Thanks" button
+    # Below fixes the not clickable at this point error.
     driver.execute_script(
         "arguments[0].click();",
         WebDriverWait(driver, 20).until(
@@ -83,9 +97,7 @@ if (single == True):
                 (By.XPATH, ".//*[@id='stepUpsell']/div/button[1]"))))
     driver.implicitly_wait(10)  # Allow page loading
 
-    # button = driver.find_element_by_xpath(
-    #     ".//*[contains(text(),'Ham')]/preceding-sibling::input[@type='checkbox']"
-    # )
+    # ADD INGREDIENTS SECTION
     loop(
         ".//*[contains(text(),'Ham')]/preceding-sibling::input[@type='checkbox']"
     )
@@ -97,9 +109,27 @@ if (single == True):
         ".//*[contains(text(),'Bacon')]/preceding-sibling::input[@type='checkbox']"
     )
 
+    #Click "Add to Order" button
     driver.find_element_by_xpath(
         ".//*[@id='pizzaSummaryInColumn']/div[1]/div[2]/div[2]/button").click(
         )
+    # navigate to coupons page
+    driver.get(
+        "https://www.dominos.com/en/pages/order/#!/section/Coupons/category/All/"
+    )
+    #click "Add Coupon" button
+    # driver.find_element_by_xpath(
+    #     ".//*[@id='js-pageSplit']/section/div[2]/div/div[1]/div[16]/a/div[2]/button"
+    # ).click()
+    driver.execute_script(
+        "arguments[0].click();",
+        WebDriverWait(driver, 20).until(
+            EC.element_to_be_clickable((
+                By.XPATH,
+                ".//*[@id='js-pageSplit']/section/div[2]/div/div[1]/div[16]/a/div[2]/button"
+            ))))
+
+    driver.get("https://www.dominos.com/en/pages/order/#!/checkout/")
 
 # coupon code 9133
 # https://www.dominos.com/en/pages/order/#/product/S_PIZZA/builder/?couponCode=9193&code=12SCREEN
