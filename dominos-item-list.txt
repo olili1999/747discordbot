@@ -13,20 +13,18 @@ MEATS
 CHOOSE NON-MEATS
 ==================================
 10 - Hot Buffalo Sauce 
-11 - Jalapeno Peppers
-12 - Onions
-13 - Banana Peppers
-14 - Diced Tomatoes 
-15 - Black Olives
-16 - Green Olives 
+11 - Garlic
+12 - Jalapeno Pepppers
+13 - Onions
+14 - Banana Peppers
+15 - Diced Tomatoes
+16 - Black Olives
 17 - Mushrooms
 18 - Pineapple
-19 - Shredded Provolone Cheese 
+19 - Shredded Provolone Cheese
 20 - Cheddar Cheese
 21 - Green Peppers
-22 - Cheddar Cheese
-23 - Green Peppers
-24 - Spinach 
-25 - Roasted Red Peppers
-26 - Feta Cheese
-27 - Shredded Parmesan Asiago 
+22 - Spinach
+23 - Roasted Red Peppers
+24 - Feta Cheese
+25 - Shredded Parmesan Asiago 

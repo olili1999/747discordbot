@@ -51,10 +51,29 @@ async def minute_check():
 
 @client.event
 async def on_message(message):
+
+    # ignore bot's own messages
+    if message.author.bot == True or "!" not in message.content:
+        return
     # !addreminder 5 min/hr 2 message asfdasdfasdfasdf asdfasdf
     msg = ""
     num_count = 0
-    if "!addreminder" in message.content and len(message.content.split()) >= 4:
+    if "!addreminder" in message.content:
+        # check that the message contains >= 4 items
+        if len(message.content.split()) < 4:
+            await message.channel.send(
+                "Correct format is as follows: !addreminder <#> <min/hr> <# repeats> <insert message>"
+            )
+            return
+        # check there is a number for duration and # of repeats
+        try:
+            int(message.content.split()[1])
+            int(message.content.split()[3])
+        except:
+            await message.channel.send(
+                "Correct format is as follows: !addreminder <#> <min/hr> <# repeats> <insert message>"
+            )
+            return
         for s in message.content.split():
             if (num_count == 2):
                 msg += s
@@ -76,8 +95,32 @@ async def on_message(message):
         data.append(templist)
 
         await message.channel.send("Added reminder")
-    else:
-        print('Error :(')
+
+    # !pizza single/double 1,2,3,4
+    elif "!dominos" in message.content:
+        try:
+            toppingslist = message.content.split()[2].split(',')
+            # check that the # toppings = 2, 3 or 4
+            # check that the # list items = 3
+            if (len(toppingslist) != 2 and len(toppingslist) != 3
+                    and len(toppingslist) != 4
+                    or len(message.content.split()) != 3):
+                await message.channel.send(
+                    "Correct format is as follows: !dominos <single/double> <#,#,#>"
+                )
+                return
+
+        except:
+            await message.channel.send(
+                "Correct format is as follows: !dominos <single/double> <#,#,#>"
+            )
+            return
+
+    elif "!commands" in message.content:
+        await message.channel.send("""
+            ```NOTICE THE SPACES IN BETWEEN INPUTS. IMPORTANT!\n1. Order a dominos pizza: !dominos <single/double> <#,#,#>\n2. Set a reminder: !addreminder <#> <min/hr> <# repeats> <insert message>
+            ```
+            """)
 
 
 minute_check.start()
