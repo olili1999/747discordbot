@@ -53,13 +53,13 @@ async def minute_check():
 
 @client.event
 async def on_message(message):
-
     # ignore bot's own messages
     if message.author.bot == True or "!" not in message.content:
         return
     # !addreminder 5 min/hr 2 message asfdasdfasdfasdf asdfasdf
     msg = ""
     num_count = 0
+
     if "!addreminder" in message.content:
         # check that the message contains >= 4 items
         if len(message.content.split()) < 4:
@@ -100,6 +100,38 @@ async def on_message(message):
 
     # !pizza single/double 1,2,3,4
     elif "!dominos" in message.content:
+        if "menu" in message.content:
+            await message.channel.send("""==================================\n
+                MEATS\n
+                ==================================\n
+                1 - Ham\n
+                2 - Beef\n 
+                3 - Salami\n 
+                4 - Pepperoni\n
+                5 - Italian Sausage\n
+                6 - Premium Chicken\n 
+                7 - Bacon\n
+                8 - Philly Steak\n 
+                ==================================\n
+                CHOOSE NON-MEATS\n
+                ==================================\n
+                10 - Hot Buffalo Sauce\n
+                11 - Garlic\n
+                12 - Jalapeno Peppers\n
+                13 - Onions\n
+                14 - Banana Peppers\n
+                15 - Diced Tomatoes\n
+                16 - Black Olives\n
+                17 - Mushrooms\n
+                18 - Pineapple\n
+                19 - Shredded Provolone Cheese\n
+                20 - Cheddar Cheese\n
+                21 - Green Peppers\n
+                22 - Spinach\n
+                23 - Roasted Red Peppers\n
+                24 - Feta Cheese\n
+                25 - Shredded Parmesan Asiago\n 
+                """)
         try:
             messagelist = message.content.split()
             # toppings info
@@ -126,11 +158,14 @@ async def on_message(message):
                   and (len(toppingslist) != 2 and len(toppingslist) != 4)):
                 await message.channel.send(
                     "Note: For double, # toppings must = 2 or 4")
+                return
 
             if (len(infolist) != 4):
                 await message.channel.send(
                     "Correct format is as follows: !dominos <single/double> <#,#,#> <First Name, Last Name, E-mail, Phone #>"
                 )
+                return
+
             pizzaobj = orderDominos(messagelist[1], toppingslist, infolist)
             pizzaobj.order_pizza()
         except:
