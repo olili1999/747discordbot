@@ -4,6 +4,8 @@ from twilio.rest import Client
 from pizzapi import *
 import datetime
 from datetime import timedelta
+from dominos import orderDominos
+
 # instance of the bot created
 client = commands.Bot(command_prefix=".")
 
@@ -99,26 +101,48 @@ async def on_message(message):
     # !pizza single/double 1,2,3,4
     elif "!dominos" in message.content:
         try:
-            toppingslist = message.content.split()[2].split(',')
-            # check that the # toppings = 2, 3 or 4
-            # check that the # list items = 3
-            if (len(toppingslist) != 2 and len(toppingslist) != 3
-                    and len(toppingslist) != 4
-                    or len(message.content.split()) != 3):
+            messagelist = message.content.split()
+            # toppings info
+            toppingslist = messagelist[2].split(',')
+            # customer info
+            infolist = messagelist[3:]
+            # reformat the infolist
+            for i in range(len(infolist)):
+                infolist[i] = infolist[i].strip()
+                infolist[i] = infolist[i].strip(',')
+            # check single or double is successfully selected
+            if (messagelist[1] != 'single' and messagelist[1] != 'double'):
                 await message.channel.send(
-                    "Correct format is as follows: !dominos <single/double> <#,#,#>"
+                    "Correct format is as follows: !dominos <single/double> <#,#,#> <First Name, Last Name, E-mail, Phone #>"
                 )
                 return
+            # if 1 pizza, # toppings must = 3
+            if (messagelist[1] == 'single' and len(toppingslist) != 3):
+                await message.channel.send(
+                    "Note: For a single pizza, # of toppings must = 3")
+                return
+            # if 2 pizzas, # toppings must = 2 or 4
+            elif (messagelist[1] == 'double'
+                  and (len(toppingslist) != 2 and len(toppingslist) != 4)):
+                await message.channel.send(
+                    "Note: For double, # toppings must = 2 or 4")
 
+            if (len(infolist) != 4):
+                await message.channel.send(
+                    "Correct format is as follows: !dominos <single/double> <#,#,#> <First Name, Last Name, E-mail, Phone #>"
+                )
+            pizzaobj = orderDominos(messagelist[1], toppingslist, infolist)
+            pizzaobj.order_pizza()
         except:
             await message.channel.send(
-                "Correct format is as follows: !dominos <single/double> <#,#,#>"
+                "Correct format is as follows: !dominos <single/double> <#,#,#> <First Name, Last Name, E-mail, Phone #>"
             )
             return
 
-    elif "!commands" in message.content:
+    elif "!diquacommands" in message.content:
         await message.channel.send("""
-            ```NOTICE THE SPACES IN BETWEEN INPUTS. IMPORTANT!\n1. Order a dominos pizza: !dominos <single/double> <#,#,#>\n2. Set a reminder: !addreminder <#> <min/hr> <# repeats> <insert message>
+            ```NOTICE THE SPACES IN BETWEEN INPUTS. IMPORTANT!\n1. Order a dominos pizza: !dominos <single/double> <#,#,#> <First Name, Last Name, E-mail, Phone #>\n2. Set a reminder: !addreminder <#> <min/hr> <# repeats> <insert message>
+               \nNote: For a single pizza, # of toppings must = 3. For double, # toppings must = 2 or 4  
             ```
             """)
 
