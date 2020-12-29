@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.keys import Keys
 import os
+import re
 # Some versions are incompatible with selenium, try https://ftp.mozilla.org/pub/firefox/releases/30.0/win32/en-US/
 
 
@@ -29,16 +30,16 @@ class orderDominos:
             if (i == 5):
                 self.phone_number += "-"
         # UNCOMMENT BELOW FOR REMOTE, HEADLESS DRIVER
-        # chrome_options = webdriver.ChromeOptions()
-        # chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-        # chrome_options.add_argument("--headless")
-        # chrome_options.add_argument("--disable-dev-shm-usage")
-        # chrome_options.add_argument("--no-sandbox")
-        # self.driver = webdriver.Chrome(
-        #     executable_path=os.environ.get("CHROMEDRIVER_PATH"),
-        #     chrome_options=chrome_options)
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
+        self.driver = webdriver.Chrome(
+            executable_path=os.environ.get("CHROMEDRIVER_PATH"),
+            chrome_options=chrome_options)
         # UNCOMMENT BELOW FOR LOCAL DRIVER
-        self.driver = webdriver.Chrome(executable_path="./chromedriver.exe")
+        # self.driver = webdriver.Chrome(executable_path="./chromedriver.exe")
 
     def click_topping(self, topping):
         # MEATS SECTION
@@ -286,8 +287,9 @@ class orderDominos:
             "https://www.dominos.com/en/pages/order/coupon#!/coupon/national/")
         self.driver.implicitly_wait(100)  # Allow page loading
 
-        self.driver.find_element_by_class_name(
-            "featured-coupon-599MixMatch").click()
+        # self.driver.find_element_by_class_name(
+        #     "featured-coupon-599MixMatch").click()
+        self.loop_class("featured-coupon-599MixMatch")
 
         # Click "Done With This Coupon" Button
         self.loop(".//*[@id='genericOverlay']/section/div/div[6]/div[2]/a")
@@ -306,6 +308,23 @@ class orderDominos:
         self.driver.find_element_by_id("Callback_Phone").clear()
         self.driver.find_element_by_id("Callback_Phone").send_keys(
             self.phone_number)  # <--- Phone
+
+        results = self.driver.find_elements(
+            By.CSS_SELECTOR, "li[data-quid='topping-part-Whole:']")
+        total = self.driver.find_element(
+            By.CSS_SELECTOR,
+            ".finalizedTotal.js-total").get_attribute("innerHTML")
+        dummy_string = ""
+        for r in results:
+            dummy_string += r.get_attribute("innerHTML")
+        toppings_clicked = re.findall("\w*[',']\s\s\w*", dummy_string)
+        return {'total': str(total), 'toppings': str(toppings_clicked)}
+
+    def complete_order(self):
+        total = self.driver.find_element(
+            By.CSS_SELECTOR,
+            ".finalizedTotal.js-total").get_attribute("innerHTML")
+        print(total)
 
     def order_pizza(self):
         self.find_nearest_store()
@@ -329,3 +348,23 @@ class orderDominos:
                 if attempt == max_attempts:
                     raise
                 attempt += 1
+
+    # Loop and wait until element is clickable by Selenium
+    def loop_class(self, string, max_attempts=3):
+        attempt = 1
+        while True:
+            try:
+                self.driver.execute_script(
+                    "arguments[0].click();",
+                    WebDriverWait(self.driver, 50).until(
+                        EC.element_to_be_clickable((By.CLASS_NAME, string))))
+                break
+            except StaleElementReferenceException:
+                if attempt == max_attempts:
+                    raise
+                attempt += 1
+
+
+# pizzaobj = orderDominos("double", ["1", "2", "3", "4"],
+#                         ["ya", "no", "yano@gmail.com", "2345678910"])
+# pizzaobj.order_pizza()

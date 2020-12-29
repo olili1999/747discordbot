@@ -19,6 +19,7 @@ client = commands.Bot(command_prefix=".")
 #                                     from_="+12517662846",
 #                                     body="<insert reminder message here!!")
 # print(message.sid)
+
 data = []
 
 
@@ -35,16 +36,16 @@ async def minute_check():
     curr_min = str(datetime.datetime.now().minute)
     try:
         for d in data:
-            compare_hour = str(d[4].hour)
-            compare_day = str(d[4].day)
-            compare_min = str(d[4].minute)
+            compare_hour = str(d[3].hour)
+            compare_day = str(d[3].day)
+            compare_min = str(d[3].minute)
             print("current time: " + "\n")
             print("\t" + curr_day + curr_hour + curr_min + "\n")
             print("comparison: ")
             print("\t" + compare_day + compare_hour + compare_min)
             if curr_hour == compare_hour and curr_day == compare_day and curr_min == compare_min:
-                channel = client.get_channel(int(d[5]))
-                await channel.send(d[6])
+                channel = client.get_channel(int(d[4]))
+                await channel.send(d[5])
                 data.remove(d)
     except:
         print('Diqua Error 404')
@@ -66,24 +67,18 @@ async def on_message(message):
                 "Correct format is as follows: !addreminder <#> <min/hr> <# repeats> <insert message>"
             )
             return
-        # check there is a number for duration and # of repeats
+        # check there is a number for duration
         try:
             int(message.content.split()[1])
-            int(message.content.split()[3])
         except:
             await message.channel.send(
                 "Correct format is as follows: !addreminder <#> <min/hr> <# repeats> <insert message>"
             )
             return
-        for s in message.content.split():
-            if (num_count == 2):
-                msg += s
-            try:
-                int(s)
-                num_count += 1
-            except:
-                continue
-        templist = message.content.split()[0:4]
+        for s in message.content.split()[3:]:
+            msg += s + " "
+        print(msg)
+        templist = message.content.split()[0:3]
         minorhr = templist[2]
         if minorhr == "min":
             templist.append(datetime.datetime.now() +
@@ -169,10 +164,37 @@ async def on_message(message):
                 return
             try:
                 pizzaobj = orderDominos(messagelist[1], toppingslist, infolist)
-                pizzaobj.order_pizza()
+                pizzaobj.find_nearest_store()
+                if (pizzaobj.pizzatype == 'single'):
+                    pizzaobj.get_single()
+                elif (pizzaobj.pizzatype == 'double'):
+                    pizzaobj.get_double()
+                d = pizzaobj.checkout()
+                await message.channel.send("Total cost for pizza(s): " +
+                                           d['total'])
+                await message.channel.send("Toppings for pizza: " +
+                                           d['toppings'])
+
                 await message.channel.send(
-                    ":pizza: Pizza was ordered successfully :D :pizza:!!")
+                    "Should I proceed? Type !confirmorder to confirm your order"
+                )
+
+                author = message.author
+
+                def check_same_author(m):
+                    return m.author == author
+
+                check = await client.wait_for('message',
+                                              check=check_same_author,
+                                              timeout=60.0)
+                await message.channel.send(check.content)
+                if ("!confirmorder" in check.content):
+                    await message.channel.send("Ordered completed.")
+                else:
+                    await message.channel.send(
+                        "Pizza was NOT ordered successfully :sob:")
                 return
+
             except:
                 await message.channel.send(
                     "Pizza was NOT ordered successfully :sob:")
