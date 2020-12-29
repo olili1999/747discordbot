@@ -28,16 +28,17 @@ class orderDominos:
                 self.phone_number += ") "
             if (i == 5):
                 self.phone_number += "-"
-
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--no-sandbox")
-        self.driver = webdriver.Chrome(
-            executable_path=os.environ.get("CHROMEDRIVER_PATH"),
-            chrome_options=chrome_options)
-        # self.driver = webdriver.Chrome(executable_path="./chromedriver.exe")
+        # UNCOMMENT BELOW FOR REMOTE, HEADLESS DRIVER
+        # chrome_options = webdriver.ChromeOptions()
+        # chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        # chrome_options.add_argument("--headless")
+        # chrome_options.add_argument("--disable-dev-shm-usage")
+        # chrome_options.add_argument("--no-sandbox")
+        # self.driver = webdriver.Chrome(
+        #     executable_path=os.environ.get("CHROMEDRIVER_PATH"),
+        #     chrome_options=chrome_options)
+        # UNCOMMENT BELOW FOR LOCAL DRIVER
+        self.driver = webdriver.Chrome(executable_path="./chromedriver.exe")
 
     def click_topping(self, topping):
         # MEATS SECTION
@@ -173,7 +174,6 @@ class orderDominos:
             "Address_Line_2").clear()  # <--- Apartment
         self.driver.find_element_by_id("City_Sep").clear()
         self.driver.find_element_by_id("Postal_Code_Sep").clear()
-
         self.driver.find_element_by_id("Street").send_keys(
             "3116 Noriega St")  # <--- Street
         self.driver.find_element_by_id("Address_Line_2").send_keys(

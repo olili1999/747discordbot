@@ -167,9 +167,16 @@ async def on_message(message):
                     "Correct format is as follows: !dominos <single/double> <#,#,#> <First Name, Last Name, E-mail, Phone #>"
                 )
                 return
-
-            pizzaobj = orderDominos(messagelist[1], toppingslist, infolist)
-            pizzaobj.order_pizza()
+            try:
+                pizzaobj = orderDominos(messagelist[1], toppingslist, infolist)
+                pizzaobj.order_pizza()
+                await message.channel.send(
+                    ":pizza: Pizza was ordered successfully :D :pizza:!!")
+                return
+            except:
+                await message.channel.send(
+                    "Pizza was NOT ordered successfully :sob:")
+                return
         except:
             await message.channel.send(
                 "Correct format is as follows: !dominos <single/double> <#,#,#> <First Name, Last Name, E-mail, Phone #>"
