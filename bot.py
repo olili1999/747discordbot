@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands, tasks
 from twilio.rest import Client
-from pizzapi import *
 import datetime
 from datetime import timedelta
 from dominos import orderDominos
@@ -28,7 +27,7 @@ async def on_ready():
     print("Bot is ready.")
 
 
-@tasks.loop(seconds=10)
+@tasks.loop(seconds=30)
 async def minute_check():
     print(data)
     curr_hour = str(datetime.datetime.now().hour)
@@ -101,7 +100,9 @@ async def on_message(message):
     # !pizza single/double 1,2,3,4
     elif "!dominos" in message.content:
         if "menu" in message.content:
-            await message.channel.send("""==================================\n
+            await message.channel.send("""
+            ```
+                ==================================
                 MEATS\n
                 ==================================\n
                 1 - Ham\n
@@ -131,6 +132,7 @@ async def on_message(message):
                 23 - Roasted Red Peppers\n
                 24 - Feta Cheese\n
                 25 - Shredded Parmesan Asiago\n 
+            ```
                 """)
         try:
             messagelist = message.content.split()

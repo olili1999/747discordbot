@@ -229,13 +229,6 @@ class orderDominos:
         self.loop(
             "(//*[contains(text(),'$7.99')])[1]/parent::*/preceding-sibling::*//*"
         )
-        # self.driver.execute_script(
-        #     "arguments[0].click();",
-        #     WebDriverWait(self.driver, 100).until(
-        #         EC.element_to_be_clickable((
-        #             By.XPATH,
-        #             "(//*[contains(text(),'$7.99')])[1]/parent::*/preceding-sibling::*//*"
-        #         ))))
 
         # Click "Done With This Coupon" Button
         self.loop(".//*[@id='genericOverlay']/section/div/div[6]/div[2]/a")
