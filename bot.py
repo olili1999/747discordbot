@@ -163,12 +163,17 @@ async def on_message(message):
                 )
                 return
             try:
+                print("broken here 1")
                 pizzaobj = orderDominos(messagelist[1], toppingslist, infolist)
+                print("broken here 2")
                 pizzaobj.find_nearest_store()
                 if (pizzaobj.pizzatype == 'single'):
+                    print("broken here 3")
                     pizzaobj.get_single()
                 elif (pizzaobj.pizzatype == 'double'):
+                    print("broken here 4")
                     pizzaobj.get_double()
+                print("broken here 5")
                 d = pizzaobj.checkout()
                 await message.channel.send("Total cost for pizza(s): " +
                                            d['total'])
