@@ -163,23 +163,23 @@ async def on_message(message):
                 )
                 return
             try:
-                print("broken here 1")
+                await message.channel.send("broken here 1")
                 pizzaobj = orderDominos(messagelist[1], toppingslist, infolist)
-                print("broken here 2")
+                await message.channel.send("broken here 2")
                 pizzaobj.find_nearest_store()
                 if (pizzaobj.pizzatype == 'single'):
-                    print("broken here 3")
+                    await message.channel.send("broken here 3")
                     pizzaobj.get_single()
                 elif (pizzaobj.pizzatype == 'double'):
-                    print("broken here 4")
+                    await message.channel.send("broken here 4")
                     pizzaobj.get_double()
-                print("broken here 5")
+                await message.channel.send("broken here 5")
                 d = pizzaobj.checkout()
                 await message.channel.send("Total cost for pizza(s): " +
                                            d['total'])
                 await message.channel.send("Toppings for pizza: " +
                                            d['toppings'])
-
+                await message.channel.send("broken here 6")
                 await message.channel.send(
                     "Should I proceed? Type !confirmorder to confirm your order"
                 )
@@ -189,6 +189,7 @@ async def on_message(message):
                 def check_same_author(m):
                     return m.author == author
 
+                await message.channel.send("broken here 7")
                 check = await client.wait_for('message',
                                               check=check_same_author,
                                               timeout=60.0)

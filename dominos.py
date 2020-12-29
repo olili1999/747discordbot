@@ -365,6 +365,6 @@ class orderDominos:
                 attempt += 1
 
 
-# pizzaobj = orderDominos("double", ["1", "2", "3", "4"],
-#                         ["ya", "no", "yano@gmail.com", "2345678910"])
-# pizzaobj.order_pizza()
+pizzaobj = orderDominos("double", ["1", "2", "3", "4"],
+                        ["ya", "no", "yano@gmail.com", "2345678910"])
+pizzaobj.order_pizza()
