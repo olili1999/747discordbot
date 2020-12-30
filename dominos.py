@@ -156,6 +156,7 @@ class orderDominos:
             self.toppingslist.pop()
 
     def find_nearest_store(self):
+        print("block1")
         # Request Dominos
         self.driver.get(
             "https://www.dominos.com/en/pages/order/?locations=1#/locations/")
@@ -168,7 +169,7 @@ class orderDominos:
                 option.click()
                 break
                 # Fill information out prior to use
-
+        print("block2")
         # clear autofill garbage
         self.driver.find_element_by_id("Street").clear()  # <--- Street
         self.driver.find_element_by_id(
@@ -183,13 +184,14 @@ class orderDominos:
             "San Francisco")  # <--- City
         self.driver.find_element_by_id("Postal_Code_Sep").send_keys(
             "94122")  # <--- Zip
-
+        print("block3")
         State = self.driver.find_element_by_id("Region")
         for option in State.find_elements_by_tag_name("option"):
             if option.text == "MI":  # <--- State (Ex. MA, NJ, NY)
                 option.click()
                 break
 
+        print("block4")
         # Search for locations
         self.loop_click(".//*[@id='locationSearchForm']/div/div[4]/button",
                         "XPATH")
@@ -431,9 +433,9 @@ class orderDominos:
     #             attempt += 1
 
 
-# pizzaobj = orderDominos("double", ["1", "2", "3", "4"],
-#                         ["ya", "no", "yano@gmail.com", "2345678910"])
-# pizzaobj.order_pizza()
-# pizzaobj2 = orderDominos("single", ["1", "2", "3"],
-#                          ["ya", "no", "yano@gmail.com", "2345678910"])
-# pizzaobj2.order_pizza()
+pizzaobj = orderDominos("double", ["1", "2", "3", "4"],
+                        ["ya", "no", "yano@gmail.com", "2345678910"])
+pizzaobj.order_pizza()
+pizzaobj2 = orderDominos("single", ["1", "2", "3"],
+                         ["ya", "no", "yano@gmail.com", "2345678910"])
+pizzaobj2.order_pizza()
