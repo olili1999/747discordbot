@@ -30,118 +30,118 @@ class orderDominos:
             if (i == 5):
                 self.phone_number += "-"
         # UNCOMMENT BELOW FOR REMOTE, HEADLESS DRIVER
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--no-sandbox")
-        self.driver = webdriver.Chrome(
-            executable_path=os.environ.get("CHROMEDRIVER_PATH"),
-            chrome_options=chrome_options)
+        # chrome_options = webdriver.ChromeOptions()
+        # chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        # chrome_options.add_argument("--headless")
+        # chrome_options.add_argument("--disable-dev-shm-usage")
+        # chrome_options.add_argument("--no-sandbox")
+        # self.driver = webdriver.Chrome(
+        #     executable_path=os.environ.get("CHROMEDRIVER_PATH"),
+        #     chrome_options=chrome_options)
         # UNCOMMENT BELOW FOR LOCAL DRIVER
-        # self.driver = webdriver.Chrome(executable_path="./chromedriver.exe")
+        self.driver = webdriver.Chrome(executable_path="./chromedriver.exe")
 
     def click_topping(self, topping):
         # MEATS SECTION
         if (topping == '1'):
-            self.loop(
-                ".//*[contains(text(),'Ham')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Ham')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
 
         elif (topping == '2'):
-            self.loop(
-                ".//*[contains(text(),'Beef')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Beef')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
 
         elif (topping == '3'):
-            self.loop(
-                ".//*[contains(text(),'Salami')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Salami')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '4'):
-            self.loop(
-                ".//*[contains(text(),'Pepperoni')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Pepperoni')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '5'):
-            self.loop(
-                ".//*[contains(text(),'Italian Sausage')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Italian Sausage')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '6'):
-            self.loop(
-                ".//*[contains(text(),'Premium Chicken')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Premium Chicken')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '7'):
-            self.loop(
-                ".//*[contains(text(),'Bacon')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Bacon')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '8'):
-            self.loop(
-                ".//*[contains(text(),'Philly Steak')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Philly Steak')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         # NON-MEATS SECTION
         elif (topping == '10'):
-            self.loop(
-                ".//*[contains(text(),'Hot Buffalo Sauce')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Hot Buffalo Sauce')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '11'):
-            self.loop(
-                ".//*[contains(text(),'Garlic')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Garlic')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '12'):
-            self.loop(
-                ".//*[contains(text(),'Jalapeno Peppers')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Jalapeno Peppers')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '13'):
-            self.loop(
-                ".//*[contains(text(),'Onions')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Onions')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '14'):
-            self.loop(
-                ".//*[contains(text(),'Banana Peppers')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Banana Peppers')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '15'):
-            self.loop(
-                ".//*[contains(text(),'Diced Tomatoes')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Diced Tomatoes')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '16'):
-            self.loop(
-                ".//*[contains(text(),'Black Olives')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Black Olives')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '17'):
-            self.loop(
-                ".//*[contains(text(),'Mushrooms')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Mushrooms')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '18'):
-            self.loop(
-                ".//*[contains(text(),'Pineapple')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Pineapple')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '19'):
-            self.loop(
-                ".//*[contains(text(),'Shredded Provolone Cheese')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Shredded Provolone Cheese')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '20'):
-            self.loop(
-                ".//*[contains(text(),'Cheddar Cheese')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Cheddar Cheese')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '21'):
-            self.loop(
-                ".//*[contains(text(),'Green Peppers')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Green Peppers')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '22'):
-            self.loop(
-                ".//*[contains(text(),'Spinach')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Spinach')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '23'):
-            self.loop(
-                ".//*[contains(text(),'Roasted Red Peppers')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Roasted Red Peppers')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '24'):
-            self.loop(
-                ".//*[contains(text(),'Feta Cheese')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Feta Cheese')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
         elif (topping == '25'):
-            self.loop(
-                ".//*[contains(text(),'Shredded Parmesan Asiago')]/preceding-sibling::input[@type='checkbox']"
-            )
+            self.loop_click(
+                ".//*[contains(text(),'Shredded Parmesan Asiago')]/preceding-sibling::input[@type='checkbox']",
+                "XPATH")
 
     # Function to select toppings for pizza
     def select_toppings(self):
@@ -191,16 +191,21 @@ class orderDominos:
                 break
 
         # Search for locations
-        self.driver.find_element(
-            By.XPATH,
-            ".//*[@id='locationSearchForm']/div/div[4]/button").click()
+        self.loop_click(".//*[@id='locationSearchForm']/div/div[4]/button",
+                        "XPATH")
+        # self.driver.find_element(
+        #     By.XPATH,
+        #     ".//*[@id='locationSearchForm']/div/div[4]/button").click()
         self.driver.implicitly_wait(20)  # Allow page loading
 
         # Click store pickup for closest store
-        self.driver.find_element(
-            By.XPATH,
-            ".//*[@id='locationsResultsPage']/div[4]/div[2]/div[1]/div[2]/div/div[2]/div[1]/a"
-        ).click()
+        self.loop_click(
+            ".//*[@id='locationsResultsPage']/div[4]/div[2]/div[1]/div[2]/div/div[2]/div[1]/a",
+            "XPATH")
+        # self.driver.find_element(
+        #     By.XPATH,
+        #     ".//*[@id='locationsResultsPage']/div[4]/div[2]/div[1]/div[2]/div/div[2]/div[1]/a"
+        # ).click()
         self.driver.implicitly_wait(20)  # Allow page loading
 
     def get_single(self):
@@ -210,14 +215,17 @@ class orderDominos:
         )
 
         #Skip to Toppings Page
-        self.driver.find_element_by_xpath(".//*[@id='toppings']").click()
+        self.loop_click(".//*[@id='toppings']", "XPATH")
+        # self.driver.find_element_by_xpath(".//*[@id='toppings']").click()
         # Click "No Thanks" button
         # Below fixes the not clickable at this point error.
-        self.driver.execute_script(
-            "arguments[0].click();",
-            WebDriverWait(self.driver, 20).until(
-                EC.element_to_be_clickable(
-                    (By.XPATH, ".//*[@id='stepUpsell']/div/button[1]"))))
+        self.loop_click(".//*[@id='stepUpsell']/div/button[1]", "XPATH")
+
+        # self.driver.execute_script(
+        #     "arguments[0].click();",
+        #     WebDriverWait(self.driver, 20).until(
+        #         EC.element_to_be_clickable(
+        #             (By.XPATH, ".//*[@id='stepUpsell']/div/button[1]"))))
         self.driver.implicitly_wait(20)  # Allow page loading
 
         # ADD INGREDIENTS SECTION
@@ -225,9 +233,12 @@ class orderDominos:
         self.driver.implicitly_wait(20)  # Allow page loading
 
         #Click "Add to Order" button
-        self.driver.find_element_by_xpath(
-            ".//*[@id='pizzaSummaryInColumn']/div[1]/div[2]/div[2]/button"
-        ).click()
+        self.loop_click(
+            ".//*[@id='pizzaSummaryInColumn']/div[1]/div[2]/div[2]/button",
+            "XPATH")
+        # self.driver.find_element_by_xpath(
+        #     ".//*[@id='pizzaSummaryInColumn']/div[1]/div[2]/div[2]/button"
+        # ).click()
         self.driver.implicitly_wait(20)  # Allow page loading
 
         # navigate to coupons page
@@ -236,16 +247,17 @@ class orderDominos:
         )
         self.driver.refresh()
         # click "Add Coupon" button
-        self.loop(
-            "(//*[contains(text(),'$7.99')])[1]/parent::*/preceding-sibling::*//*"
-        )
+        self.loop_click(
+            "(//*[contains(text(),'$7.99')])[1]/parent::*/preceding-sibling::*//*",
+            "XPATH")
 
         # Click "Done With This Coupon" Button
-        self.loop(".//*[@id='genericOverlay']/section/div/div[6]/div[2]/a")
+        self.loop_click(
+            ".//*[@id='genericOverlay']/section/div/div[6]/div[2]/a", "XPATH")
         self.driver.implicitly_wait(20)  # Allow page loading
 
         # Click "Continue Checkout" Button
-        # loop(".//*[@id='js-myOrderPage']/a")
+        # loop_click(".//*[@id='js-myOrderPage']/a")
         # self.driver.get('https://www.dominos.com')
 
     def get_double(self):
@@ -256,18 +268,24 @@ class orderDominos:
             )
 
             #Skip to Toppings Page
-            self.driver.find_element_by_xpath(".//*[@id='toppings']").click()
-            self.driver.implicitly_wait(20)  # Allow page loading
             self.driver.find_element_by_id("pizza_size|12").click()
+
+            self.loop_click(".//*[@id='toppings']", "XPATH")
+            # self.driver.find_element_by_xpath(".//*[@id='toppings']").click()
+            self.driver.implicitly_wait(20)  # Allow page loading
+            # self.driver.find_element_by_id("pizza_size|12").click()
+            # self.driver.find_element_by_id("pizza_size|12").click()
             if (i == 0):
                 # Click "No Thanks" button
                 # Below fixes the not clickable at this point error.
-                self.driver.execute_script(
-                    "arguments[0].click();",
-                    WebDriverWait(self.driver, 20).until(
-                        EC.element_to_be_clickable(
-                            (By.XPATH,
-                             ".//*[@id='stepUpsell']/div/button[1]"))))
+                self.loop_click(".//*[@id='stepUpsell']/div/button[1]",
+                                "XPATH")
+                # self.driver.execute_script(
+                #     "arguments[0].click();",
+                #     WebDriverWait(self.driver, 20).until(
+                #         EC.element_to_be_clickable(
+                #             (By.XPATH,
+                #              ".//*[@id='stepUpsell']/div/button[1]"))))
             self.driver.implicitly_wait(20)  # Allow page loading
 
             # ADD INGREDIENTS SECTION
@@ -275,9 +293,12 @@ class orderDominos:
             self.driver.implicitly_wait(20)  # Allow page loading
 
             #Click "Add to Order" button
-            self.driver.find_element_by_xpath(
-                ".//*[@id='pizzaSummaryInColumn']/div[1]/div[2]/div[2]/button"
-            ).click()
+            self.loop_click(
+                ".//*[@id='pizzaSummaryInColumn']/div[1]/div[2]/div[2]/button",
+                "XPATH")
+            # self.driver.find_element_by_xpath(
+            #     ".//*[@id='pizzaSummaryInColumn']/div[1]/div[2]/div[2]/button"
+            # ).click()
 
             self.driver.refresh()
 
@@ -289,10 +310,11 @@ class orderDominos:
 
         # self.driver.find_element_by_class_name(
         #     "featured-coupon-599MixMatch").click()
-        self.loop_class("featured-coupon-599MixMatch")
+        self.loop_click("featured-coupon-599MixMatch", "CLASS_NAME")
 
         # Click "Done With This Coupon" Button
-        self.loop(".//*[@id='genericOverlay']/section/div/div[6]/div[2]/a")
+        self.loop_click(
+            ".//*[@id='genericOverlay']/section/div/div[6]/div[2]/a", "XPATH")
         self.driver.get('https://www.dominos.com')
 
     def checkout(self):
@@ -334,8 +356,38 @@ class orderDominos:
             self.get_double()
         self.checkout()
 
-    # Loop and wait until element is clickable by Selenium
-    def loop(self, string, max_attempts=3):
+    # loop_click and wait until element is clickable by Selenium
+    def loop_click(self, string, by):
+        max_attempts = 3
+        attempt = 1
+        while True:
+            try:
+                if (by == "XPATH"):
+                    self.driver.execute_script(
+                        "arguments[0].click();",
+                        WebDriverWait(self.driver, 50).until(
+                            EC.element_to_be_clickable((By.XPATH, string))))
+                    break
+                elif (by == "CLASS_NAME"):
+                    self.driver.execute_script(
+                        "arguments[0].click();",
+                        WebDriverWait(self.driver, 50).until(
+                            EC.element_to_be_clickable(
+                                (By.CLASS_NAME, string))))
+                    break
+                elif (by == "ID"):
+                    self.driver.execute_script(
+                        "arguments[0].click();",
+                        WebDriverWait(self.driver, 50).until(
+                            EC.element_to_be_clickable((By.ID, string))))
+                    break
+
+            except StaleElementReferenceException:
+                if attempt == max_attempts:
+                    raise
+                attempt += 1
+
+    def loop_click_id(self, string, max_attempts=3):
         attempt = 1
         while True:
             try:
@@ -349,22 +401,39 @@ class orderDominos:
                     raise
                 attempt += 1
 
-    # Loop and wait until element is clickable by Selenium
-    def loop_class(self, string, max_attempts=3):
-        attempt = 1
-        while True:
-            try:
-                self.driver.execute_script(
-                    "arguments[0].click();",
-                    WebDriverWait(self.driver, 50).until(
-                        EC.element_to_be_clickable((By.CLASS_NAME, string))))
-                break
-            except StaleElementReferenceException:
-                if attempt == max_attempts:
-                    raise
-                attempt += 1
+    # loop_click and wait until element is clickable by Selenium
+    # def loop_click(self, string, max_attempts=3):
+    #     attempt = 1
+    #     while True:
+    #         try:
+    #             self.driver.execute_script(
+    #                 "arguments[0].click();",
+    #                 WebDriverWait(self.driver, 50).until(
+    #                     EC.element_to_be_clickable((By.CLASS_NAME, string))))
+    #             break
+    #         except StaleElementReferenceException:
+    #             if attempt == max_attempts:
+    #                 raise
+    #             attempt += 1
+
+    # def loop_click_id(self, string, max_attempts=3):
+    #     attempt = 1
+    #     while True:
+    #         try:
+    #             self.driver.execute_script(
+    #                 "arguments[0].click();",
+    #                 WebDriverWait(self.driver, 50).until(
+    #                     EC.element_to_be_clickable((By.ID, string))))
+    #             break
+    #         except StaleElementReferenceException:
+    #             if attempt == max_attempts:
+    #                 raise
+    #             attempt += 1
 
 
-pizzaobj = orderDominos("double", ["1", "2", "3", "4"],
-                        ["ya", "no", "yano@gmail.com", "2345678910"])
-pizzaobj.order_pizza()
+# pizzaobj = orderDominos("double", ["1", "2", "3", "4"],
+#                         ["ya", "no", "yano@gmail.com", "2345678910"])
+# pizzaobj.order_pizza()
+pizzaobj2 = orderDominos("single", ["1", "2", "3"],
+                         ["ya", "no", "yano@gmail.com", "2345678910"])
+pizzaobj2.order_pizza()
