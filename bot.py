@@ -193,7 +193,6 @@ async def on_message(message):
                 check = await client.wait_for('message',
                                               check=check_same_author,
                                               timeout=60.0)
-                await message.channel.send(check.content)
                 if ("!confirmorder" in check.content):
                     await message.channel.send("Ordered completed.")
                 else:
