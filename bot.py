@@ -187,7 +187,6 @@ async def on_message(message):
                 def check_same_author(m):
                     return m.author == author
 
-                await message.channel.send("broken here 7")
                 check = await client.wait_for('message',
                                               check=check_same_author,
                                               timeout=60.0)
