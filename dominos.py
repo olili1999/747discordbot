@@ -171,11 +171,15 @@ class orderDominos:
                 # Fill information out prior to use
         print("block2")
         # clear autofill garbage
+        self.driver.implicitly_wait(20)  # Allow page loading
+
         self.driver.find_element_by_id("Street").clear()  # <--- Street
         self.driver.find_element_by_id(
             "Address_Line_2").clear()  # <--- Apartment
         self.driver.find_element_by_id("City_Sep").clear()
         self.driver.find_element_by_id("Postal_Code_Sep").clear()
+        self.driver.implicitly_wait(20)  # Allow page loading
+
         self.driver.find_element_by_id("Street").send_keys(
             "3116 Noriega St")  # <--- Street
         self.driver.find_element_by_id("Address_Line_2").send_keys(
@@ -185,6 +189,8 @@ class orderDominos:
         self.driver.find_element_by_id("Postal_Code_Sep").send_keys(
             "94122")  # <--- Zip
         print("block3")
+        self.driver.implicitly_wait(20)  # Allow page loading
+
         State = self.driver.find_element_by_id("Region")
         for option in State.find_elements_by_tag_name("option"):
             if option.text == "MI":  # <--- State (Ex. MA, NJ, NY)
