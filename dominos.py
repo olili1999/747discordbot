@@ -172,22 +172,34 @@ class orderDominos:
         print("block2")
         # clear autofill garbage
         self.driver.implicitly_wait(20)  # Allow page loading
+        street = WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.ID, "Street")))
+        street.clear()
 
-        self.driver.find_element_by_id("Street").clear()  # <--- Street
-        self.driver.find_element_by_id(
-            "Address_Line_2").clear()  # <--- Apartment
-        self.driver.find_element_by_id("City_Sep").clear()
-        self.driver.find_element_by_id("Postal_Code_Sep").clear()
-        self.driver.implicitly_wait(20)  # Allow page loading
+        city = WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.ID, "City_Sep")))
+        city.clear()
+        zipcode = WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.ID, "Postal_Code_Sep")))
+        zipcode.clear()
+        street.send_keys("3116 Noriega St")
+        city.send_keys("San Francisco")
+        zipcode.send_keys("94122")
+        # self.driver.find_element_by_id("Street").clear()  # <--- Street
+        # self.driver.find_element_by_id(
+        #     "Address_Line_2").clear()  # <--- Apartment
+        # self.driver.find_element_by_id("City_Sep").clear()
+        # self.driver.find_element_by_id("Postal_Code_Sep").clear()
+        # self.driver.implicitly_wait(20)  # Allow page loading
 
-        self.driver.find_element_by_id("Street").send_keys(
-            "3116 Noriega St")  # <--- Street
-        self.driver.find_element_by_id("Address_Line_2").send_keys(
-            "")  # <--- Apartment
-        self.driver.find_element_by_id("City_Sep").send_keys(
-            "San Francisco")  # <--- City
-        self.driver.find_element_by_id("Postal_Code_Sep").send_keys(
-            "94122")  # <--- Zip
+        # self.driver.find_element_by_id("Street").send_keys(
+        #     "3116 Noriega St")  # <--- Street
+        # self.driver.find_element_by_id("Address_Line_2").send_keys(
+        #     "")  # <--- Apartment
+        # self.driver.find_element_by_id("City_Sep").send_keys(
+        #     "San Francisco")  # <--- City
+        # self.driver.find_element_by_id("Postal_Code_Sep").send_keys(
+        #     "94122")  # <--- Zip
         print("block3")
         self.driver.implicitly_wait(20)  # Allow page loading
 
