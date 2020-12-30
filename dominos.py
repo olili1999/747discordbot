@@ -178,14 +178,14 @@ class orderDominos:
                     EC.element_to_be_clickable((By.ID, "Street")))
                 street.clear()
 
-                city = WebDriverWait(self.driver, 20).until(
-                    EC.element_to_be_clickable((By.ID, "City_Sep")))
-                city.clear()
+                # city = WebDriverWait(self.driver, 20).until(
+                #     EC.element_to_be_clickable((By.ID, "City_Sep")))
+                # city.clear()
                 zipcode = WebDriverWait(self.driver, 20).until(
                     EC.element_to_be_clickable((By.ID, "Postal_Code_Sep")))
                 zipcode.clear()
                 street.send_keys("3116 Noriega St")
-                city.send_keys("San Francisco")
+                # city.send_keys("San Francisco")
                 zipcode.send_keys("94122")
                 break
             except:
