@@ -163,23 +163,21 @@ async def on_message(message):
                 )
                 return
             try:
-                await message.channel.send("broken here 1")
                 pizzaobj = orderDominos(messagelist[1], toppingslist, infolist)
-                await message.channel.send("broken here 2")
+                await message.channel.send("Finding nearest store...")
                 pizzaobj.find_nearest_store()
                 if (pizzaobj.pizzatype == 'single'):
-                    await message.channel.send("broken here 3")
+                    await message.channel.send("Making pizza...")
                     pizzaobj.get_single()
                 elif (pizzaobj.pizzatype == 'double'):
-                    await message.channel.send("broken here 4")
+                    await message.channel.send("Making pizza...")
                     pizzaobj.get_double()
-                await message.channel.send("broken here 5")
+                await message.channel.send("Checking out...")
                 d = pizzaobj.checkout()
                 await message.channel.send("Total cost for pizza(s): " +
                                            d['total'])
                 await message.channel.send("Toppings for pizza: " +
                                            d['toppings'])
-                await message.channel.send("broken here 6")
                 await message.channel.send(
                     "Should I proceed? Type !confirmorder to confirm your order"
                 )
@@ -194,7 +192,7 @@ async def on_message(message):
                                               check=check_same_author,
                                               timeout=60.0)
                 if ("!confirmorder" in check.content):
-                    await message.channel.send("Ordered completed.")
+                    await message.channel.send(":pizza: successfully ordered.")
                 else:
                     await message.channel.send(
                         "Pizza was NOT ordered successfully :sob:")
