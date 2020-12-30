@@ -30,16 +30,16 @@ class orderDominos:
             if (i == 5):
                 self.phone_number += "-"
         # UNCOMMENT BELOW FOR REMOTE, HEADLESS DRIVER
-        # chrome_options = webdriver.ChromeOptions()
-        # chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-        # chrome_options.add_argument("--headless")
-        # chrome_options.add_argument("--disable-dev-shm-usage")
-        # chrome_options.add_argument("--no-sandbox")
-        # self.driver = webdriver.Chrome(
-        #     executable_path=os.environ.get("CHROMEDRIVER_PATH"),
-        #     chrome_options=chrome_options)
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
+        self.driver = webdriver.Chrome(
+            executable_path=os.environ.get("CHROMEDRIVER_PATH"),
+            chrome_options=chrome_options)
         # UNCOMMENT BELOW FOR LOCAL DRIVER
-        self.driver = webdriver.Chrome(executable_path="./chromedriver.exe")
+        # self.driver = webdriver.Chrome(executable_path="./chromedriver.exe")
 
     def click_topping(self, topping):
         # MEATS SECTION
@@ -434,6 +434,6 @@ class orderDominos:
 # pizzaobj = orderDominos("double", ["1", "2", "3", "4"],
 #                         ["ya", "no", "yano@gmail.com", "2345678910"])
 # pizzaobj.order_pizza()
-pizzaobj2 = orderDominos("single", ["1", "2", "3"],
-                         ["ya", "no", "yano@gmail.com", "2345678910"])
-pizzaobj2.order_pizza()
+# pizzaobj2 = orderDominos("single", ["1", "2", "3"],
+#                          ["ya", "no", "yano@gmail.com", "2345678910"])
+# pizzaobj2.order_pizza()
