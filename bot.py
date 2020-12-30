@@ -209,7 +209,7 @@ async def on_message(message):
 
     elif "!diquacommands" in message.content:
         await message.channel.send("""
-            ```NOTICE THE SPACES IN BETWEEN INPUTS. IMPORTANT!\n1. Order a dominos pizza: !dominos <single/double> <#,#,#> <First Name, Last Name, E-mail, Phone #>\n2. Set a reminder: !addreminder <#> <min/hr> <# repeats> <insert message>
+            ```NOTICE THE SPACES IN BETWEEN INPUTS. IMPORTANT!\n1. Order a dominos pizza: !dominos <single/double> <#,#,#> <First Name, Last Name, E-mail, Phone #>\n2. Get toppings from dominos: !dominos menu\n3. Set a reminder: !addreminder <#> <min/hr> <# repeats> <insert message>
                \nNote: For a single pizza, # of toppings must = 3. For double, # toppings must = 2 or 4  
             ```
             """)
