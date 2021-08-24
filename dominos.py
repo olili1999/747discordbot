@@ -9,7 +9,6 @@ import os
 import re
 # Some versions are incompatible with selenium, try https://ftp.mozilla.org/pub/firefox/releases/30.0/win32/en-US/
 
-
 class orderDominos:
     def __init__(self, pizzatype, toppingslist, infolist):
         self.pizzatype = pizzatype
@@ -426,39 +425,3 @@ class orderDominos:
                     raise
                 attempt += 1
 
-    # loop_click and wait until element is clickable by Selenium
-    # def loop_click(self, string, max_attempts=3):
-    #     attempt = 1
-    #     while True:
-    #         try:
-    #             self.driver.execute_script(
-    #                 "arguments[0].click();",
-    #                 WebDriverWait(self.driver, 50).until(
-    #                     EC.element_to_be_clickable((By.CLASS_NAME, string))))
-    #             break
-    #         except StaleElementReferenceException:
-    #             if attempt == max_attempts:
-    #                 raise
-    #             attempt += 1
-
-    # def loop_click_id(self, string, max_attempts=3):
-    #     attempt = 1
-    #     while True:
-    #         try:
-    #             self.driver.execute_script(
-    #                 "arguments[0].click();",
-    #                 WebDriverWait(self.driver, 50).until(
-    #                     EC.element_to_be_clickable((By.ID, string))))
-    #             break
-    #         except StaleElementReferenceException:
-    #             if attempt == max_attempts:
-    #                 raise
-    #             attempt += 1
-
-
-# pizzaobj = orderDominos("double", ["1", "2", "3", "4"],
-#                         ["ya", "no", "yano@gmail.com", "2345678910"])
-# pizzaobj.order_pizza()
-# pizzaobj2 = orderDominos("single", ["1", "2", "3"],
-#                          ["ya", "no", "yano@gmail.com", "2345678910"])
-# pizzaobj2.order_pizza()

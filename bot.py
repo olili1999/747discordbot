@@ -1,25 +1,11 @@
 import discord
 from discord.ext import commands, tasks
-from twilio.rest import Client
 import datetime
 from datetime import timedelta
 from dominos import orderDominos
 
 # instance of the bot created
 client = commands.Bot(command_prefix=".")
-
-# # Your Account SID from twilio.com/console
-# account_sid = "AC1a17d74e4b470de46a6df56d22026a97"
-# # Your Auth Token from twilio.com/console
-# auth_token = "5cea8334681ad82bd240738fe0131dc4"
-
-# client = Client(account_sid, auth_token)
-
-# message = client.messages.create(to="+12484953497",
-#                                     from_="+12517662846",
-#                                     body="<insert reminder message here!!")
-# print(message.sid)
-
 data = []
 
 
@@ -48,7 +34,7 @@ async def minute_check():
                 await channel.send(d[5])
                 data.remove(d)
     except:
-        print('Diqua Error 404')
+        print('Error')
 
 
 @client.event
@@ -207,7 +193,7 @@ async def on_message(message):
             )
             return
 
-    elif "!diquacommands" in message.content:
+    elif "!pizzacommands" in message.content:
         await message.channel.send("""
             ```NOTICE THE SPACES IN BETWEEN INPUTS. IMPORTANT!\n1. Order a dominos pizza: !dominos <single/double> <#,#,#> <First Name, Last Name, E-mail, Phone #>\n2. Get toppings from dominos: !dominos menu\n3. Set a reminder: !addreminder <#> <min/hr> <# repeats> <insert message>
                \nNote: For a single pizza, # of toppings must = 3. For double, # toppings must = 2 or 4  
@@ -216,4 +202,4 @@ async def on_message(message):
 
 
 minute_check.start()
-client.run('NzkwMDE5MTQyNjkzODE0Mjg5.X96gqQ.Ny_k9Arqe7eylXY4LRCuiZaW5DM')
+client.run('')
